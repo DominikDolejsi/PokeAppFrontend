@@ -1,4 +1,20 @@
+{
+	admin off
+	persist_config off
+	auto_https off
+	log {
+		format json
+	}
+	servers {
+		trusted_proxies static private_ranges
+	}
+}
+
 :8000 {
+    log {
+		format json
+	}
+    respond /health 200
     root * /usr/share/caddy
     encode gzip
     file_server
