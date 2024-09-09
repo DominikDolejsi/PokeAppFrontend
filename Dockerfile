@@ -1,11 +1,13 @@
 FROM denoland/deno:1.46.2
 
-EXPOSE 5173
+EXPOSE 4507
 
-WORKDIR /AppFrontend
-
-USER deno
+WORKDIR /usr/src/app
 
 COPY . .
 
-CMD ["deno", "task", "start"]
+RUN deno task build
+
+USER deno
+
+CMD ["deno", "task", "serve"]
