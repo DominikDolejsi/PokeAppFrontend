@@ -1,5 +1,7 @@
 FROM denoland/deno:1.46.2 AS builder
 
+ARG BACKEND_API
+
 WORKDIR /usr/src/app
 
 COPY . .
