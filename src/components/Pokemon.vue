@@ -13,7 +13,7 @@ console.log(data)
 <template>
     <div class="pokemonBox">
       <p>
-        {{ data.name }}
+        {{ data[0].name }}
       </p>
     </div>
 </template>
