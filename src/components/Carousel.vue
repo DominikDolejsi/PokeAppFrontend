@@ -22,14 +22,15 @@ const decrementIndex = () => {
   <p>{{ allPokemon.length && allPokemon[currentIndex].name }}</p>
   <!-- <p>{{ allPokemon.length && allPokemon[currentIndex].origin }}</p> -->
   <div class="mainContainer">
-    <button @click.prevent="decrementIndex">
+    <button @click.prevent="decrementIndex" class="arrowButton">
       left arrow
     </button>
     <img
       :src="allPokemon.length ? allPokemon[currentIndex].artwork : ''"
       alt="This is image of current pokemon"
+      class="pokemonImage"
     />
-    <button @click.prevent="incrementIndex">
+    <button @click.prevent="incrementIndex" class="arrowButton">
       right arrow
     </button>
   </div>
@@ -40,5 +41,13 @@ const decrementIndex = () => {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
+}
+
+.pokemonImage {
+  max-width: calc(100% - 120px);
+}
+
+.arrowButton {
+  width: 60px
 }
 </style>
