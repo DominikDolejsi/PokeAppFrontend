@@ -18,5 +18,4 @@ onMounted(async () => {
 <template>
   <h1>First Screen</h1>
   <Carousel :all-pokemon="allPokemon" />
-  <p>{{ allPokemon }}</p>
 </template>
