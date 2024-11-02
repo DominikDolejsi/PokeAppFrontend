@@ -1,15 +1,10 @@
 <script async setup lang="ts">
-import Pokemon from "./components/Pokemon.vue";
+import PokemonBrowser from "./pages/PokemonBrowser.vue";
+
 </script>
 
 <template>
-  <Suspense>
-    <Pokemon />
-
-    <template #fallback>
-    Loading...
-    </template>
-  </Suspense>
+  <PokemonBrowser />
 </template>
 
 <style scoped>
