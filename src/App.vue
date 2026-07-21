@@ -1,11 +1,3 @@
-<script async setup lang="ts">
-import PokemonBrowser from "./pages/PokemonBrowser.vue";
-
-</script>
-
 <template>
-  <PokemonBrowser />
+  <h1>Hello Pokémon!</h1>
 </template>
-
-<style scoped>
-</style>

@@ -1,0 +1,20 @@
+{
+  "name": "pokemon-app-frontend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "deno run -A npm:vite",
+    "build": "deno run -A npm:vite build",
+    "configure": "lefthook install"
+  },
+  "dependencies": {
+    "vue": "^3.5.40"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.8",
+    "lefthook": "^2.1.10",
+    "typescript": "^7.0.2",
+    "vite": "^8.1.5"
+  },
+  "module": "auto"
+}
