@@ -1,21 +1,23 @@
-  FROM denoland/deno:2.9.3 AS builder
+    FROM denoland/deno:2.9.3 AS builder
 
-  ARG BACKEND_API
+    ARG BACKEND_API
 
-  WORKDIR /usr/src/app
+    WORKDIR /usr/src/app
 
-  COPY . .
+    COPY . .
 
-  RUN printenv
+    RUN printenv
 
-  RUN deno task build
+    RUN deno install
 
-  FROM caddy:2.8.4-alpine
+    RUN deno task build
 
-  COPY --from=builder /usr/src/app/dist /usr/share/caddy
+    FROM caddy:2.8.4-alpine
 
-  COPY ./Caddyfile /etc/caddy/Caddyfile
+    COPY --from=builder /usr/src/app/dist /usr/share/caddy
 
-  RUN env
+    COPY ./Caddyfile /etc/caddy/Caddyfile
 
-  EXPOSE 8000
+    RUN env
+
+    EXPOSE 8000

@@ -10,7 +10,7 @@ each repository focuses on a single concern.
 
 - [Frontend 💅] <- you are here
 - [Backend ⚙️](https://github.com/DominikDolejsi/PokeAppBackend)
-- [Crawdaunt](https://github.com/DominikDolejsi/PokeAppCrawdaunt) 
+- [Crawdaunt 🦞](https://github.com/DominikDolejsi/PokeAppCrawdaunt) 
 - [Images 🖼️](https://github.com/DominikDolejsi/PokeAppImages)
 
 ## Installation
