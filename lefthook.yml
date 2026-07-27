@@ -14,14 +14,14 @@ pre-push:
 pre-commit:
   parallel: true
   jobs:
-      - name: lint
-        run: deno lint {staged_files}
-        glob: "*.ts"
+    - name: lint
+      run: deno lint {staged_files}
+      glob: "*.ts"
 
-      - name: fmt
-        run: deno fmt {staged_files}
-        glob: "*.{ts,md,yaml,json}"
+    - name: fmt
+      run: deno fmt {staged_files}
+      glob: "*.{ts,md,yaml,json}"
 
-      - name: typecheck
-        run: deno check {staged_files}
-        glob: "*.{ts}"
+    - name: typecheck
+      run: deno check {staged_files}
+      glob: "*.ts"
