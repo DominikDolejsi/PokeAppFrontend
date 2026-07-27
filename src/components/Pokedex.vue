@@ -26,6 +26,9 @@ let maxLimit = currentPokemonIndex.value;
 let minLimit = currentPokemonIndex.value;
 
 onMounted(async () => {
+  console.log(import.meta.env.VITE_BACKEND_API);
+  console.log(import.meta.env.BACKEND_API);
+
   const response = await fetch(
     "https://pokeappbackend-dev.up.railway.app/pokemon?limit=0",
   );
