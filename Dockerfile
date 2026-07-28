@@ -1,6 +1,7 @@
     FROM denoland/deno:2.9.3 AS builder
 
     ARG BACKEND_API
+    ENV VITE_BACKEND_API=${BACKEND_API}
 
     WORKDIR /usr/src/app
 
