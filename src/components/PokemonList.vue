@@ -148,10 +148,11 @@ watch(
     color: var(--black);
 
     background: var(--light-grey);
-    padding: 0.25rem;
+    padding: 1rem;
     border: solid black 1px;
     border-radius: 0.5rem;
     cursor: pointer;
+    font-size: var(--fs-large);
   }
 
   a:active {
@@ -162,7 +163,7 @@ watch(
 .mainView {
   display: grid;
   grid-template-columns: 1fr 1.5rem minmax(0, 475px) 1.5rem 1fr;
-  grid-template-rows: auto auto auto auto auto auto auto 4rem;
+  grid-template-rows: auto auto auto auto auto auto auto 6rem;
   margin: 1rem;
   margin-top: 3.5rem;
 }
