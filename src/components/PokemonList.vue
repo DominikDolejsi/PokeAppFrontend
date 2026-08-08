@@ -71,8 +71,8 @@ watch(
     <div class="nameArea">
       <div class="index">{{ "#" + selectedPokemon.index }}</div>
       <div class="nameBar">
-        <p class="name">{{ selectedPokemon.name }}</p>
-        <p class="category">{{ selectedPokemon.category + " pokemon" }}</p>
+        <p class="name poppins-medium">{{ selectedPokemon.name }}</p>
+        <p class="category poppins-regular-italic">{{ selectedPokemon.category + " pokemon" }}</p>
       </div>
       <div
         class="formContainer"
@@ -141,6 +141,7 @@ watch(
   border-radius: 0.5rem;
 
   a {
+    user-select: none;
     text-decoration: none;
     color: var(--black);
 
@@ -148,6 +149,7 @@ watch(
     padding: 0.25rem;
     border: solid black 1px;
     border-radius: 0.5rem;
+    cursor: pointer;
   }
 
   a:hover {
