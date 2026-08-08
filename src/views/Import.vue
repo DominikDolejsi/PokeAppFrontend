@@ -95,18 +95,12 @@ const updateDatabase = async (event: Event) => {
   console.log(data);
 };
 
-
 const updateEvolutions = () => {
   // I go through all pokemonevodata
   // check if it has next evolution
   // then fetch based on the index and form (if existing)
   //
-
-
-
-}
-
-
+};
 </script>
 
 <template>

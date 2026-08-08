@@ -73,3 +73,31 @@ h6 {
 #__next {
   isolation: isolate;
 }
+
+#app {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+:root {
+  /*Main Colors*/
+  --pokedex-red: #bf0a3aff;
+  --white: #ffffffff;
+  --black: #000000ff;
+  --light-grey: #616161ff;
+  --grey: #313131ff;
+
+  /*Accent Colors*/
+  --big-diode: #0ceef5ff;
+  --small-diode-red: #f1001bff;
+  --small-diode-yellow: #d4dd4dff;
+  --small-diode-green: #b7e44dff;
+  --male-color: #0071bdff;
+  --female-color: #ed1e79ff;
+
+  /*Relative colors*/
+  --background: var(--white);
+  --text-color: var(--black);
+  --text-color-reverse: var(--white);
+}

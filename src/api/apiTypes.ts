@@ -1,4 +1,5 @@
-export type PokemonJSON = {
+export type PokemonDB = {
+  _id: string;
   name: string;
   index: number;
   category: string;
@@ -13,4 +14,6 @@ export type PokemonJSON = {
   home_sprite_shiny: null | string;
   home_sprite_female: null | string;
   home_sprite_female_shiny: null | string;
+  createdAt: Date;
+  updatedAt: Date;
 };

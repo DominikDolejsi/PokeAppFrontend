@@ -6,8 +6,6 @@ interface ViteTypeOptions {
 
 interface ImportMetaEnv {
   readonly VITE_BACKEND_API: string;
-  readonly BACKEND_API: string;
-  // more env variables...
 }
 
 interface ImportMeta {
