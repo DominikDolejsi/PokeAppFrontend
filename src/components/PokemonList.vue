@@ -72,7 +72,9 @@ watch(
       <div class="index">{{ "#" + selectedPokemon.index }}</div>
       <div class="nameBar">
         <p class="name poppins-medium">{{ selectedPokemon.name }}</p>
-        <p class="category poppins-regular-italic">{{ selectedPokemon.category + " pokemon" }}</p>
+        <p class="category poppins-regular-italic">
+          {{ selectedPokemon.category + " pokemon" }}
+        </p>
       </div>
       <div
         class="formContainer"
@@ -152,12 +154,8 @@ watch(
     cursor: pointer;
   }
 
-  a:hover {
-    background: var(--grey);
-  }
-
   a:active {
-    background: var(--light-grey);
+    background: var(--grey);
   }
 }
 
