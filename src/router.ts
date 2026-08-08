@@ -9,6 +9,7 @@ import Pokedex from "./views/Pokedex.vue";
 import NotFound from "./views/NotFound.vue";
 
 const routes = [
+  { path: "/", redirect: "/pokedex" },
   { path: "/pokedex", redirect: "/pokedex/1" },
   {
     path: "/pokedex/:index",

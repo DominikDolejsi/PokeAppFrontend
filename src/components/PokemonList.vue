@@ -150,7 +150,7 @@ watch(
 }
 
 .index {
-  font-size: 4rem;
+  font-size: 2rem;
   align-self: center;
 }
 
@@ -160,14 +160,14 @@ watch(
 }
 
 .name {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: bold;
 }
 
 .category {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-style: italic;
-  margin-top: -1.75rem;
+  margin-top: -1.0rem;
 }
 
 .forms {
@@ -180,7 +180,7 @@ watch(
 
 .generation {
   margin-top: -0.75rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
   grid-row: 3 / 4;
   grid-column: 2 / 3;
   justify-self: end;
