@@ -210,7 +210,7 @@ watch(
 .category {
   font-size: var(--fs-medium);
   font-style: italic;
-  margin-top: -0.75rem;
+  margin-top: -0.5rem;
 }
 
 .formContainer {
@@ -275,6 +275,6 @@ watch(
 }
 
 .flavourText {
-  font-size: 1.25rem;
+  font-size: var(--fs-large);
 }
 </style>
