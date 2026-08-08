@@ -8,13 +8,17 @@ export const preloadImage = (src: string) => {
   img.src = src;
 };
 
+export const preloadArtwork = (artwork: string) => {
+  preloadImage(getArtworkUrl(artwork));
+};
+
 export const preloadImagesInRange = (
   currentIndex: number,
   preloadStep: number,
   pokemonData: PokemonDB[],
 ) => {
   const preloadCallback = (pokemon: PokemonDB) => {
-    preloadImage(getArtworkUrl(pokemon.artwork));
+    preloadArtwork(pokemon.artwork);
   };
 
   const indexStepSum = currentIndex + preloadStep;

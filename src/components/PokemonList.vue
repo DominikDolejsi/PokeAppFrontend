@@ -1,7 +1,13 @@
 <script setup lang="ts">
-import { computed, onMounted, watch } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 import { PokemonDB } from "../api/apiTypes";
-import { circularIndex, getArtworkUrl, preloadImagesInRange } from "../utils";
+import {
+  circularIndex,
+  getArtworkUrl,
+  preloadImage,
+  preloadImagesInRange,
+  preloadArtwork,
+} from "../utils";
 import TopBar from "./TopBar.vue";
 
 const PRELOAD_STEP = 5;
@@ -13,12 +19,19 @@ const { pokemonData, pokemonEntries, selectedEntryIndex, pageName } =
     selectedEntryIndex: number;
     pageName: string;
   }>();
-const selectedPokemon = computed<PokemonDB>(() => {
-  return pokemonEntries[selectedEntryIndex];
+
+const selectedPokemonIndex = computed<number>(() => {
+  return pokemonEntries[selectedEntryIndex].index;
 });
 const selectedPokemonForms = computed<PokemonDB[]>(() => {
   return pokemonData.filter(
-    (pokemon) => pokemon.index === selectedPokemon.value.index,
+    (pokemon) => pokemon.index === selectedPokemonIndex.value,
+  );
+});
+const selectedForm = ref<string | null>(null);
+const selectedPokemon = computed<PokemonDB | undefined>(() => {
+  return selectedPokemonForms.value.find(
+    (pokemon) => pokemon.form === selectedForm.value,
   );
 });
 
@@ -30,10 +43,10 @@ const prevIndex = computed<number>(
 );
 
 const selectedPokemonArtwork = computed<string>(() => {
-  return getArtworkUrl(selectedPokemon.value.artwork);
+  return getArtworkUrl(selectedPokemon.value?.artwork ?? "");
 });
 const selectedPokemonAltArtwork = computed<string>(() => {
-  return `Official artwork of ${selectedPokemon.value.form} ${selectedPokemon.value.name}`;
+  return `Official artwork of ${selectedPokemon.value?.form} ${selectedPokemon.value?.name}`;
 });
 
 onMounted(() => {
@@ -44,25 +57,46 @@ watch(
   () => selectedEntryIndex,
   (newPokemonIndex) => {
     preloadImagesInRange(newPokemonIndex, PRELOAD_STEP, pokemonEntries);
+    selectedPokemonForms.value.forEach((pokemon) =>
+      preloadArtwork(pokemon.artwork),
+    );
+    selectedForm.value = null;
   },
 );
 </script>
 
 <template>
   <TopBar />
-  <div class="mainView">
-    <div class="topBar2">
+  <div class="mainView" v-if="selectedPokemon">
+    <div class="nameArea">
       <div class="index">{{ "#" + selectedPokemon.index }}</div>
       <div class="nameBar">
         <p class="name">{{ selectedPokemon.name }}</p>
         <p class="category">{{ selectedPokemon.category + " pokemon" }}</p>
       </div>
+      <div
+        class="formContainer"
+        :style="{
+          visibility: selectedPokemonForms.length > 1 ? 'visible' : 'hidden',
+        }"
+      >
+        <label for="form-select" class="visually-hidden">Select a form</label>
+        <select
+          name="forms"
+          id="form-select"
+          class="formSelect"
+          v-model="selectedForm"
+        >
+          <option v-for="form in selectedPokemonForms" :value="form.form">
+            {{ form.form ?? "default" }}
+          </option>
+        </select>
+      </div>
     </div>
-    <div class="forms">{{ selectedPokemon.form }}</div>
-    <div class="generation">{{ "gen " + selectedPokemon.generation }}</div>
     <div class="imageArea">
       <img :src="selectedPokemonArtwork" :alt="selectedPokemonAltArtwork" />
     </div>
+    <div class="generation">{{ "gen " + selectedPokemon.generation }}</div>
     <div class="imageBar">
       <div class="types">
         <div class="type1">{{ selectedPokemon.type[0] }}</div>
@@ -72,29 +106,29 @@ watch(
     </div>
 
     <div class="bottomBar">
-      <div class="flavourtext">
+      <div class="flavourText">
         {{ selectedPokemon.flavor_text[0] }}
       </div>
-      <div class="flavourtext">
+      <div class="flavourText">
         {{ selectedPokemon.flavor_text[1] }}
       </div>
     </div>
   </div>
-  <div class="actionbar">
-    <button>Settings</button>
+  <div class="actionBar">
+    <button disabled style="visibility: hidden">Settings</button>
     <RouterLink :to="{ name: pageName, params: { index: prevIndex } }"
       >Prev</RouterLink
     >
-    <button>Up</button>
+    <button disabled style="visibility: hidden">Up</button>
     <RouterLink :to="{ name: pageName, params: { index: nextIndex } }"
       >Next</RouterLink
     >
-    <button>Add</button>
+    <button disabled style="visibility: hidden">Add</button>
   </div>
 </template>
 
 <style lang="css" scoped>
-.actionbar {
+.actionBar {
   position: fixed;
   bottom: 1rem;
   background: var(--pokedex-red);
@@ -104,29 +138,33 @@ watch(
   grid-template-columns: auto auto auto auto auto;
   justify-content: space-evenly;
   padding: 0.75rem;
+  border-radius: 0.5rem;
+
+  a {
+    text-decoration: none;
+    color: var(--black);
+
+    background: var(--light-grey);
+    padding: 0.25rem;
+    border: solid black 1px;
+    border-radius: 0.5rem;
+  }
+
+  a:hover {
+    background: var(--grey);
+  }
+
+  a:active {
+    background: var(--light-grey);
+  }
 }
 
 .mainView {
   display: grid;
-  grid-template-columns: 1fr minmax(0, 475px) 1fr;
-  grid-template-rows: auto auto auto auto auto auto auto;
+  grid-template-columns: 1fr 1.5rem minmax(0, 475px) 1.5rem 1fr;
+  grid-template-rows: auto auto auto auto auto auto auto 4rem;
   margin: 1rem;
-  margin-top: 4rem;
-}
-
-.navigationBar {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-template-rows: auto auto;
-  /*justify-content: end;*/
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
-}
-
-.menu {
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
-  justify-self: end;
+  margin-top: 3.5rem;
 }
 
 .searchBar {
@@ -140,84 +178,102 @@ watch(
   grid-row: 2 / 3;
 }
 
-.topBar2 {
+.nameArea {
   display: grid;
   grid-template-columns: auto 1fr;
-  grid-column: 2 / 3;
+  grid-template-rows: auto auto;
+  grid-column: 2 / 5;
   grid-row: 2 / 3;
-  max-width: 500px;
-  justify-content: start;
 }
 
 .index {
-  font-size: 2rem;
-  align-self: center;
+  font-size: var(--fs-xl);
+  align-self: end;
+  grid-row: 2 / 3;
+  grid-column: 1 / 2;
+  line-height: 1;
 }
 
 .nameBar {
   display: grid;
   justify-items: end;
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
 }
 
 .name {
-  font-size: 2.5rem;
+  font-size: var(--fs-xl);
   font-weight: bold;
 }
 
 .category {
-  font-size: 1.25rem;
+  font-size: var(--fs-medium);
   font-style: italic;
-  margin-top: -1.0rem;
+  margin-top: -0.75rem;
 }
 
-.forms {
-  font-size: 1.5rem;
-  grid-row: 3 / 4;
+.formContainer {
+  display: grid;
+  grid-row: 1 / 2;
   grid-column: 2 / 3;
-  justify-self: start;
-  margin-top: -0.75rem;
+}
+
+.formSelect {
+  font-size: var(--fs-medium);
+  justify-self: end;
+  margin-bottom: -0.5rem;
+  text-align: end;
+  border: none;
+  background: none;
 }
 
 .generation {
-  margin-top: -0.75rem;
-  font-size: 1rem;
+  font-size: var(--fs-medium);
   grid-row: 3 / 4;
-  grid-column: 2 / 3;
+  grid-column: 3 / 5;
   justify-self: end;
+  user-select: none;
 }
 
 .imageArea {
+  display: grid;
+  grid-row: 3 / 6;
+  grid-column: 3 / 4;
+}
+
+.imageArea > img {
   grid-row: 3 / 6;
   grid-column: 2 / 3;
 }
 
 .imageBar {
   grid-row: 5 / 6;
-  grid-column: 2 / 3;
+  grid-column: 2 / 5;
   display: grid;
   grid-template-columns: auto auto;
 }
 
 .types {
-  font-size: 1.5rem;
+  font-size: var(--fs-large);
 }
 
 .gender {
   justify-self: end;
   align-self: end;
-  font-size: 1.5rem;
+  font-size: var(--fs-large);
+  user-select: none;
 }
 
 .bottomBar {
   grid-row: 6 / 7;
-  grid-column: 2 / 3;
+  grid-column: 2 / 5;
   max-width: 475px;
   margin-top: 0.75rem;
   display: grid;
   gap: 0.5rem;
 }
 
-.flavourtext {
+.flavourText {
   font-size: 1.25rem;
 }
 </style>

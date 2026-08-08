@@ -27,6 +27,7 @@
   display: grid;
   grid-template-rows: auto auto auto;
   grid-template-columns: auto;
+  pointer-events: none;
 }
 
 .barContainer {

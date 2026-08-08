@@ -74,6 +74,19 @@ h6 {
   isolation: isolate;
 }
 
+/*
+  For assistive technology
+*/
+.visually-hidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
 #app {
   display: flex;
   flex-flow: column nowrap;
@@ -100,4 +113,10 @@ h6 {
   --background: var(--white);
   --text-color: var(--black);
   --text-color-reverse: var(--white);
+
+  /*Font sizes*/
+  --fs-xl: clamp(1.25rem, 6vw + 1rem , 2.5rem);
+  --fs-large: clamp(1rem, 1vw + 1rem , 1.5rem);
+  --fs-medium: 1rem;
+  --fs-small: 0.75rem;
 }
