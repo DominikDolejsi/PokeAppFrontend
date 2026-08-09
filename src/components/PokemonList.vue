@@ -72,7 +72,7 @@ watch(
       <div class="index">{{ "#" + selectedPokemon.index }}</div>
       <div class="nameBar">
         <p class="name poppins-medium">{{ selectedPokemon.name }}</p>
-        <p class="category poppins-regular-italic">
+        <p class="category poppins-light-italic">
           {{ selectedPokemon.category + " pokemon" }}
         </p>
       </div>
@@ -95,6 +95,7 @@ watch(
         </select>
       </div>
     </div>
+    <div class="highlight"></div>
     <div class="imageArea">
       <img :src="selectedPokemonArtwork" :alt="selectedPokemonAltArtwork" />
     </div>
@@ -117,15 +118,14 @@ watch(
     </div>
   </div>
   <div class="actionBar">
-    <button disabled style="visibility: hidden">Settings</button>
+    <button disabled>Settings</button>
     <RouterLink :to="{ name: pageName, params: { index: prevIndex } }"
       >Prev</RouterLink
     >
-    <button disabled style="visibility: hidden">Up</button>
     <RouterLink :to="{ name: pageName, params: { index: nextIndex } }"
       >Next</RouterLink
     >
-    <button disabled style="visibility: hidden">Add</button>
+    <button disabled>Add</button>
   </div>
 </template>
 
@@ -137,7 +137,7 @@ watch(
   width: calc(100% - 2rem);
   display: grid;
   grid-template-rows: auto;
-  grid-template-columns: auto auto auto auto auto;
+  grid-template-columns: auto auto auto auto;
   justify-content: space-evenly;
   padding: 0.75rem;
   border-radius: 0.5rem;
@@ -146,17 +146,29 @@ watch(
     user-select: none;
     text-decoration: none;
     color: var(--black);
+    text-align: center;
 
     background: var(--light-grey);
-    padding: 1rem;
+    width: 5rem;
+    padding: 0.5rem;
     border: solid black 1px;
     border-radius: 0.5rem;
     cursor: pointer;
-    font-size: var(--fs-large);
+    font-size: var(--fs-medium);
   }
 
   a:active {
     background: var(--grey);
+  }
+
+  button {
+    width: 5rem;
+  }
+
+  button:disabled {
+    background: var(--lighter-grey);
+    border-radius: 0.5rem;
+    border: solid black 1px;
   }
 }
 
@@ -222,7 +234,7 @@ watch(
 .formSelect {
   font-size: var(--fs-medium);
   justify-self: end;
-  margin-bottom: -0.5rem;
+  margin-bottom: -0.75rem;
   text-align: end;
   border: none;
   background: none;
@@ -234,6 +246,18 @@ watch(
   grid-column: 3 / 5;
   justify-self: end;
   user-select: none;
+}
+
+.highlight {
+  grid-row: 3 / 6;
+  grid-column: 3 / 4;
+  width: 100%;
+  background: var(--lighter-grey);
+  height: 80px;
+  align-self: end;
+  filter: blur(20px);
+  border-radius: 100%;
+  z-index: -1;
 }
 
 .imageArea {
@@ -275,6 +299,6 @@ watch(
 }
 
 .flavourText {
-  font-size: var(--fs-large);
+  font-size: var(--fs-medium);
 }
 </style>

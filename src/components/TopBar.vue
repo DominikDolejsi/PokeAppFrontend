@@ -38,18 +38,18 @@
 
 .topBarBorder {
   width: 100%;
-  height: 5rem;
+  height: 6rem;
   background: black;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
 
-  --r: 1rem;
-  --s: 1.5rem;
+  --r: 1.5rem;
+  --s: 2rem;
   clip-path: shape(
     from 0 0,
     line to 100% 0,
-    line to 100% calc(60% + 0.1rem),
-    line to calc(30% + 0.1rem) calc(60% + 0.1rem),
+    line to 100% calc(50% + 0.1rem),
+    line to calc(40% + 0.1rem) calc(50% + 0.1rem),
     curve by calc(-1 * var(--s)) var(--r) with calc(-0.8 * var(--s))
       calc(0.2 * var(--r)),
     curve by calc(-1 * var(--s)) var(--r) with calc(-0.2 * var(--s))
@@ -60,20 +60,20 @@
 
 .topBar {
   width: calc(100% - 0.2rem);
-  height: calc(5rem - 0.2rem);
+  height: calc(6rem - 0.2rem);
   align-self: center;
   justify-self: center;
   background: var(--pokedex-red);
   grid-column: 1 / 2;
   grid-row: 1 / 2;
 
-  --r: 1rem;
-  --s: 1.5rem;
+  --r: 1.5rem;
+  --s: 2rem;
   clip-path: shape(
     from 0 0,
     line to 100% 0,
-    line to 100% 60%,
-    line to 30% 60%,
+    line to 100% 50%,
+    line to 40% 50%,
     curve by calc(-1 * var(--s)) var(--r) with calc(-0.8 * var(--s))
       calc(0.2 * var(--r)),
     curve by calc(-1 * var(--s)) var(--r) with calc(-0.2 * var(--s))
@@ -94,8 +94,8 @@
 
 .outerCircle {
   background: white;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 4.5rem;
+  height: 4.5rem;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   align-self: center;
@@ -107,8 +107,8 @@
 
 .innerCircle {
   background: turquoise;
-  width: 3rem;
-  height: 3rem;
+  width: 4rem;
+  height: 4rem;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   align-self: center;
@@ -121,15 +121,15 @@
 
 .whiteDot {
   background: white;
-  width: 1rem;
-  height: 1rem;
+  width: 1.5rem;
+  height: 1.5rem;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   margin-top: 1.5rem;
   margin-left: 0.75rem;
   z-index: 1;
   border-radius: 100%;
-  filter: blur(3px);
+  filter: blur(4px);
 }
 
 .miniLed {

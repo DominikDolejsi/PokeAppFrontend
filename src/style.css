@@ -99,6 +99,12 @@ h6 {
   font-style: normal;
 }
 
+.poppins-light-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
 .poppins-regular-italic {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
@@ -120,6 +126,7 @@ h6 {
   --white: #ffffffff;
   --black: #000000ff;
   --light-grey: #868686ff;
+  --lighter-grey: #c3c3c3ff;
   --grey: #313131ff;
 
   /*Accent Colors*/
@@ -134,6 +141,8 @@ h6 {
   --background: var(--white);
   --text-color: var(--black);
   --text-color-reverse: var(--white);
+  --button-color: var(--light-grey);
+  --button-color-disabled: var(--lighter-grey);
 
   /*Font sizes*/
   --fs-xl: 2.5rem;
