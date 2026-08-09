@@ -118,7 +118,7 @@ watch(
     </div>
   </div>
   <div class="actionBar">
-    <button disabled>Settings</button>
+    <button disabled>Menu</button>
     <RouterLink :to="{ name: pageName, params: { index: prevIndex } }"
       >Prev</RouterLink
     >
@@ -149,7 +149,7 @@ watch(
     text-align: center;
 
     background: var(--light-grey);
-    width: 5rem;
+    width: min(20vw, 5rem);
     padding: 0.5rem;
     border: solid black 1px;
     border-radius: 0.5rem;
@@ -161,8 +161,12 @@ watch(
     background: var(--grey);
   }
 
+  a:focuse {
+    border: none;
+  }
+
   button {
-    width: 5rem;
+    width: min(20vw, 5rem);
   }
 
   button:disabled {
