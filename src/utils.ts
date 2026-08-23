@@ -1,7 +1,8 @@
 import { PokemonDB } from "./api/apiTypes.ts";
+import { ARTWORK_URL } from "./constants.ts";
 
 export const getArtworkUrl = (artwork: string) =>
-  `https://raw.githubusercontent.com/DominikDolejsi/PokeAppImages/refs/heads/master/Artwork/${artwork}.png`;
+  `${ARTWORK_URL}/${artwork}.png`;
 
 export const preloadImage = (src: string) => {
   const img = new Image();

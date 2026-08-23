@@ -4,7 +4,6 @@ import { PokemonDB } from "../api/apiTypes";
 import {
   circularIndex,
   getArtworkUrl,
-  preloadImage,
   preloadImagesInRange,
   preloadArtwork,
 } from "../utils";
