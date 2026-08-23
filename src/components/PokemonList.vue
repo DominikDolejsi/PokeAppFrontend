@@ -45,7 +45,7 @@ const selectedPokemonArtwork = computed<string>(() => {
   return getArtworkUrl(selectedPokemon.value?.artwork ?? "");
 });
 const selectedPokemonAltArtwork = computed<string>(() => {
-  return `Official artwork of ${selectedPokemon.value?.form} ${selectedPokemon.value?.name}`;
+  return `Official artwork of ${selectedPokemon.value?.form ?? ""} ${selectedPokemon.value?.name}`;
 });
 
 onMounted(() => {
