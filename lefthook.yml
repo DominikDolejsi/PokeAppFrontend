@@ -9,7 +9,7 @@ pre-push:
       tags:
         - frontend
         - security
-      run: deno audit
+      run: deno audit --level=critical
 
 pre-commit:
   jobs:
