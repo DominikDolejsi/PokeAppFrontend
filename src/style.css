@@ -145,17 +145,17 @@ h6 {
   --button-color-disabled: var(--lighter-grey);
 
   /*Font sizes*/
-  --fs-xl: 2.5rem;
+  --fs-xl: clamp(1.5rem, 8vw, 2.5rem);
   --fs-large: 1.5rem;
   --fs-medium: 1.25rem;
   --fs-small: 1rem;
 }
 
-@media (max-width: 25rem) {
+/*@media (max-width: 25rem) {
   :root {
     --fs-xl: 2rem;
     --fs-large: 1.25rem;
     --fs-medium: 1rem;
     --fs-small: 0.75rem;
   }
-}
+}*/
