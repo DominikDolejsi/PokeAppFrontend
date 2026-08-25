@@ -200,6 +200,7 @@ watch(
   grid-template-rows: auto auto;
   grid-column: 2 / 5;
   grid-row: 2 / 3;
+  min-height: 4.75rem;
 }
 
 .index {
