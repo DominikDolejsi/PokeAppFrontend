@@ -6,6 +6,8 @@ backend API.
 
 ## Project Architecture
 
+Deployed at: [PokeApp](https://pokeappfrontend-dev.up.railway.app/pokedex/1)
+
 This repository is part of a larger Pokémon application split into several
 repositories. The project follows a clear separation of responsibilities, where
 each repository focuses on a single concern.
