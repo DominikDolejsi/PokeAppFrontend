@@ -1,5 +1,6 @@
 import { PokemonDB } from "./api/apiTypes.ts";
-import { ARTWORK_URL } from "./constants.ts";
+import { ARTWORK_URL, POKEMON_TYPE } from "./constants.ts";
+import { PokemonType } from "./types.ts";
 
 export const getArtworkUrl = (artwork: string) =>
   `${ARTWORK_URL}/${artwork}.png`;
@@ -60,4 +61,22 @@ export const pokemonToEntryIndex = (
   }
 
   return number - 1;
+};
+
+export const getSortedFormNames = (
+  pokemon: PokemonDB[],
+): Array<string | null> => {
+  const formNames: Array<string | null> = [null];
+
+  pokemon.sort().forEach((pokemon) => {
+    if (pokemon.form !== null) {
+      formNames.push(pokemon.form);
+    }
+  });
+
+  return formNames;
+};
+
+export const isPokemonType = (type: string): type is PokemonType => {
+  return type in POKEMON_TYPE;
 };

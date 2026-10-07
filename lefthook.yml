@@ -22,5 +22,5 @@ pre-commit:
       glob: "*.{ts,md,yaml,json}"
 
     - name: typecheck
-      run: deno check {staged_files}
-      glob: "*.ts"
+      run: deno check .
+      glob: "*.{ts,d.ts}"

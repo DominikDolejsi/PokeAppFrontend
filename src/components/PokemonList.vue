@@ -6,8 +6,10 @@ import {
   getArtworkUrl,
   preloadImagesInRange,
   preloadArtwork,
+  getSortedFormNames,
 } from "../utils";
 import TopBar from "./TopBar.vue";
+import PokemonType from "./PokemonType.vue";
 
 const PRELOAD_STEP = 5;
 
@@ -26,6 +28,9 @@ const selectedPokemonForms = computed<PokemonDB[]>(() => {
   return pokemonData.filter(
     (pokemon) => pokemon.index === selectedPokemonIndex.value,
   );
+});
+const selectedPokemonFormNames = computed<Array<string | null>>(() => {
+  return getSortedFormNames(selectedPokemonForms.value);
 });
 const selectedForm = ref<string | null>(null);
 const selectedPokemon = computed<PokemonDB | undefined>(() => {
@@ -88,8 +93,8 @@ watch(
           class="formSelect"
           v-model="selectedForm"
         >
-          <option v-for="form in selectedPokemonForms" :value="form.form">
-            {{ form.form ?? "default" }}
+          <option v-for="form in selectedPokemonFormNames" :value="form">
+            {{ form ?? "default" }}
           </option>
         </select>
       </div>
@@ -101,8 +106,8 @@ watch(
     <div class="generation">{{ "gen " + selectedPokemon.generation }}</div>
     <div class="imageBar">
       <div class="types">
-        <div class="type1">{{ selectedPokemon.type[0] }}</div>
-        <div class="type2">{{ selectedPokemon.type[1] }}</div>
+        <PokemonType :type="selectedPokemon.type[0]" />
+        <PokemonType :type="selectedPokemon.type[1]" />
       </div>
       <div class="gender">{{ selectedPokemon.gender }}</div>
     </div>
@@ -283,7 +288,8 @@ watch(
 }
 
 .types {
-  font-size: var(--fs-large);
+  display: grid;
+  gap: 0.25rem;
 }
 
 .gender {
