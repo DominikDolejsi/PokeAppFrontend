@@ -246,6 +246,14 @@ watch(
   text-align: end;
   border: none;
   background: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid black;
+  }
 }
 
 .generation {
@@ -300,7 +308,7 @@ watch(
   grid-row: 6 / 7;
   grid-column: 2 / 5;
   max-width: 475px;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   display: grid;
   padding: 1rem;
   gap: 1rem;
