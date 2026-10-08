@@ -3,13 +3,16 @@ import { computed, onMounted, ref, watch } from "vue";
 import { PokemonDB } from "../api/apiTypes";
 import {
   circularIndex,
-  getArtworkUrl,
   preloadImagesInRange,
   preloadArtwork,
   getSortedFormNames,
+  getArtworkSrc,
 } from "../utils";
+import { ARTWORK_URL, TYPE_ICON_STYLE } from "../constants";
 import TopBar from "./TopBar.vue";
 import PokemonType from "./PokemonType.vue";
+import PokemonGeneration from "./PokemonGeneration.vue";
+import PokemonGender from "./PokemonGender.vue";
 
 const PRELOAD_STEP = 5;
 
@@ -47,7 +50,7 @@ const prevIndex = computed<number>(
 );
 
 const selectedPokemonArtwork = computed<string>(() => {
-  return getArtworkUrl(selectedPokemon.value?.artwork ?? "");
+  return getArtworkSrc(selectedPokemon.value?.artwork ?? "");
 });
 const selectedPokemonAltArtwork = computed<string>(() => {
   return `Official artwork of ${selectedPokemon.value?.form ?? ""} ${selectedPokemon.value?.name}`;
@@ -103,13 +106,23 @@ watch(
     <div class="imageArea">
       <img :src="selectedPokemonArtwork" :alt="selectedPokemonAltArtwork" />
     </div>
-    <div class="generation">{{ "gen " + selectedPokemon.generation }}</div>
+    <div class="generation">
+      <PokemonGeneration :generation="selectedPokemon.generation" />
+    </div>
     <div class="imageBar">
       <div class="types">
-        <PokemonType :type="selectedPokemon.type[0]" />
-        <PokemonType :type="selectedPokemon.type[1]" />
+        <PokemonType
+          :type="selectedPokemon.type[0]"
+          :iconStyle="TYPE_ICON_STYLE.go"
+        />
+        <PokemonType
+          :type="selectedPokemon.type[1]"
+          :iconStyle="TYPE_ICON_STYLE.go"
+        />
       </div>
-      <div class="gender">{{ selectedPokemon.gender }}</div>
+      <div class="gender">
+        <PokemonGender :gender="selectedPokemon.gender" />
+      </div>
     </div>
 
     <div class="bottomBar">
@@ -250,7 +263,6 @@ watch(
 }
 
 .generation {
-  font-size: var(--fs-medium);
   grid-row: 3 / 4;
   grid-column: 3 / 5;
   justify-self: end;

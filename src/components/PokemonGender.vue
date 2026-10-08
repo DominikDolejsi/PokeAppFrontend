@@ -1,35 +1,35 @@
 <script setup lang="ts">
 import { computed, onMounted } from "vue";
-import { PokemonType, TypeIconStyle } from "../types";
-import { getTypeIconSrc, isPokemonType, preloadTypeIcons } from "../utils";
+import { Gender } from "../types";
+import { GENDER_TO_STRING } from "../constants";
+import { getGenderIconSrc, preloadGenderIcons } from "../utils";
 
-const { type, iconStyle = "go" } = defineProps<{
-  type: string;
-  iconStyle: TypeIconStyle;
-}>();
+const { gender } = defineProps<{ gender: Gender }>();
 
-const parsedPokemonType = computed<PokemonType | null>(() => {
-  if (isPokemonType(type)) return type;
-  return null;
+const parsedGender = computed<string>(() => {
+  console.log(GENDER_TO_STRING[gender], "Gender");
+  return GENDER_TO_STRING[gender];
 });
 
-const iconAlt = computed(() => `Icon of ${type} type pokemon`);
+const altGender = computed<string>(
+  () => `Icon indicating ${parsedGender.value} gender of pokemon`,
+);
 
 onMounted(() => {
-  preloadTypeIcons(iconStyle);
+  preloadGenderIcons(true);
 });
 </script>
 
 <template>
   <div
-    v-if="parsedPokemonType !== null"
     class="container"
-    :style="{ backgroundColor: `var(--go-${parsedPokemonType})` }"
+    :style="{ background: `var(--${parsedGender}-opaque)` }"
   >
     <img
       class="icon"
-      :src="getTypeIconSrc(parsedPokemonType, iconStyle)"
-      :alt="iconAlt"
+      :style="{ background: `var(--${parsedGender})` }"
+      :src="getGenderIconSrc(parsedGender, true)"
+      :alt="altGender"
     />
   </div>
 </template>
@@ -67,7 +67,8 @@ onMounted(() => {
 }
 
 .icon {
-  width: 50px;
+  width: 49px;
   margin: 2px;
+  border-radius: 54px;
 }
 </style>

@@ -134,8 +134,6 @@ h6 {
   --small-diode-red: #f1001bff;
   --small-diode-yellow: #d4dd4dff;
   --small-diode-green: #b7e44dff;
-  --male-color: #0071bdff;
-  --female-color: #ed1e79ff;
 
   /*Relative colors*/
   --background: var(--white);
@@ -144,11 +142,57 @@ h6 {
   --button-color: var(--light-grey);
   --button-color-disabled: var(--lighter-grey);
 
+  /*Pokemon type GO colors*/
+  --go-fire: rgba(255 157 83 / 60%);
+  --go-water: rgba(76 145 214 / 60%);
+  --go-grass: rgba(100 188 92 / 60%);
+  --go-poison: rgba(173 106 201 / 60%);
+  --go-normal: rgba(145 154 163 / 60%);
+  --go-rock: rgba(200 184 140 / 60%);
+  --go-ground: rgba(200 184 140 / 60%);
+  --go-flying: rgba(144 170 222 / 60%);
+  --go-psychic: rgba(249 114 119 / 60%);
+  --go-ghost: rgba(81 105 174 / 60%);
+  --go-fighting: rgba(207 62 105 / 60%);
+  --go-electric: rgba(243 211 56 / 60%);
+  --go-fairy: rgba(237 144 231 / 60%);
+  --go-steel: rgba(90 143 163 / 60%);
+  --go-dark: rgba(90 82 102 / 60%);
+  --go-dragon: rgba(2 109 197 / 60%);
+  --go-ice: rgba(117 207 193 / 60%);
+  --go-bug: rgba(144 193 44 / 60%);
+
+  /*Generation colors*/
+  --gen-1: rgba(172 211 108 / 100%);
+  --gen-2: rgba(220 214 119 / 100%);
+  --gen-3: rgba(156 215 200 / 100%);
+  --gen-4: rgba(183 163 195 / 100%);
+  --gen-5: rgba(159 202 223 / 100%);
+  --gen-6: rgba(221 96 140 / 100%);
+  --gen-7: rgba(232 148 131 / 100%);
+  --gen-8: rgba(201 125 192 / 100%);
+  --gen-9: rgba(232 204 89 / 100%);
+  --gen-10: rgba(157 193 183 / 100%);
+
+  /*Gender color*/
+  --unknown: rgba(183 246 132 / 100%);
+  --male: rgba(0 113 189 / 100%);
+  --female: rgba(237 30 121 / 100%);
+  --gendered: linear-gradient(to left, var(--male), var(--female));
+  --unknown-opaque: rgba(183 246 132 / 60%);
+  --male-opaque: rgba(0 113 189 / 60%);
+  --female-opaque: rgba(237 30 121 / 60%);
+  --gendered-opaque: linear-gradient(
+    to left,
+    var(--male-opaque),
+    var(--female-opaque)
+  );
+
   /*Font sizes*/
   --fs-xl: clamp(1.5rem, 8vw, 2.5rem);
   --fs-large: 1.5rem;
   --fs-medium: clamp(1rem, 4vw, 1.25rem);
-  --fs-small: 1rem;
+  --fs-small: 0.75rem;
 }
 
 /*@media (max-width: 25rem) {

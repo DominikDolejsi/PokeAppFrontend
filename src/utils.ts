@@ -1,17 +1,50 @@
 import { PokemonDB } from "./api/apiTypes.ts";
-import { ARTWORK_URL, POKEMON_TYPE } from "./constants.ts";
-import { PokemonType } from "./types.ts";
-
-export const getArtworkUrl = (artwork: string) =>
-  `${ARTWORK_URL}/${artwork}.png`;
+import {
+  ARTWORK_URL,
+  GENDER_ICONS_URL,
+  GENDER_TO_STRING,
+  POKEMON_TYPE,
+  TYPE_ICONS_URL,
+} from "./constants.ts";
+import { PokemonType, TypeIconStyle } from "./types.ts";
 
 export const preloadImage = (src: string) => {
   const img = new Image();
   img.src = src;
 };
 
-export const preloadArtwork = (artwork: string) => {
-  preloadImage(getArtworkUrl(artwork));
+export const preloadArtwork = (fileName: string) => {
+  preloadImage(getArtworkSrc(fileName));
+};
+
+export const preloadTypeIcons = (iconStyle: TypeIconStyle) => {
+  for (const type in POKEMON_TYPE) {
+    preloadImage(getTypeIconSrc(type, iconStyle));
+  }
+};
+
+export const preloadGenderIcons = (white: boolean) => {
+  for (const gender in GENDER_TO_STRING) {
+    preloadImage(getGenderIconSrc(gender, white));
+  }
+};
+
+export const getArtworkSrc = (fileName: string) => {
+  return `${ARTWORK_URL}/${fileName}.png`;
+};
+
+export const getTypeIconSrc = (
+  pokemonType: string,
+  iconStyle: TypeIconStyle,
+): string => {
+  return `${TYPE_ICONS_URL}/${pokemonType}_${iconStyle}.png`;
+};
+
+export const getGenderIconSrc = (
+  gender: string,
+  white: boolean,
+) => {
+  return `${GENDER_ICONS_URL}/${gender}${white ? "_white" : ""}.png`;
 };
 
 export const preloadImagesInRange = (

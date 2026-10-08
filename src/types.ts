@@ -1,13 +1,13 @@
-import { POKEMON_TYPE, TYPE_ICON_VERSION } from "./constants.ts";
+import { POKEMON_TYPE, TYPE_ICON_STYLE } from "./constants.ts";
 
 export type PokemonJSON = {
   name: string;
   index: number;
   category: string;
   form: null | string;
-  gender: number;
+  gender: Gender;
   generation: number;
-  type: string[];
+  type: PokemonType[];
   flavor_text: string[];
   next_evolution: null | string[];
   artwork: string;
@@ -19,4 +19,6 @@ export type PokemonJSON = {
 
 export type PokemonType = keyof typeof POKEMON_TYPE;
 
-export type TypeIconVersion = keyof typeof TYPE_ICON_VERSION;
+export type TypeIconStyle = keyof typeof TYPE_ICON_STYLE;
+
+export type Gender = 0 | 1 | 2 | 3;

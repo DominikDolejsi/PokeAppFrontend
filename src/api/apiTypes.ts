@@ -1,12 +1,14 @@
+import { Gender, PokemonType } from "../types.ts";
+
 export type PokemonDB = {
   _id: string;
   name: string;
   index: number;
   category: string;
   form: null | string;
-  gender: number;
+  gender: Gender;
   generation: number;
-  type: string[];
+  type: PokemonType[];
   flavor_text: string[];
   next_evolution: null | string[];
   artwork: string;
