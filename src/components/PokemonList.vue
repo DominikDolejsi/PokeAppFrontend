@@ -13,6 +13,7 @@ import TopBar from "./TopBar.vue";
 import PokemonType from "./PokemonType.vue";
 import PokemonGeneration from "./PokemonGeneration.vue";
 import PokemonGender from "./PokemonGender.vue";
+import PokemonFlavorText from "./PokemonFlavorText.vue";
 
 const PRELOAD_STEP = 5;
 
@@ -126,12 +127,8 @@ watch(
     </div>
 
     <div class="bottomBar">
-      <div class="flavourText">
-        {{ selectedPokemon.flavor_text[0] }}
-      </div>
-      <div class="flavourText">
-        {{ selectedPokemon.flavor_text[1] }}
-      </div>
+      <PokemonFlavorText :text="selectedPokemon.flavor_text[0]" />
+      <PokemonFlavorText :text="selectedPokemon.flavor_text[1]" />
     </div>
   </div>
   <div class="actionBar">
@@ -199,17 +196,6 @@ watch(
   grid-template-rows: auto auto auto auto auto auto auto 6rem;
   margin: 1rem;
   margin-top: 3.5rem;
-}
-
-.searchBar {
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
-}
-
-.navigation {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-row: 2 / 3;
 }
 
 .nameArea {
@@ -285,11 +271,11 @@ watch(
   display: grid;
   grid-row: 3 / 6;
   grid-column: 3 / 4;
-}
 
-.imageArea > img {
-  grid-row: 3 / 6;
-  grid-column: 2 / 3;
+  img {
+    grid-row: 3 / 6;
+    grid-column: 2 / 3;
+  }
 }
 
 .imageBar {
@@ -307,7 +293,6 @@ watch(
 .gender {
   justify-self: end;
   align-self: end;
-  font-size: var(--fs-large);
   user-select: none;
 }
 
@@ -315,12 +300,9 @@ watch(
   grid-row: 6 / 7;
   grid-column: 2 / 5;
   max-width: 475px;
-  margin-top: 0.75rem;
+  margin-top: 1rem;
   display: grid;
-  gap: 0.5rem;
-}
-
-.flavourText {
-  font-size: var(--fs-medium);
+  padding: 1rem;
+  gap: 1rem;
 }
 </style>
