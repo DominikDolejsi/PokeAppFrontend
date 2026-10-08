@@ -67,7 +67,7 @@ onMounted(() => {
 }
 
 .icon {
-  width: 49px;
+  width: 48px;
   margin: 2px;
   border-radius: 54px;
 }
