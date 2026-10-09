@@ -2,6 +2,9 @@
 
 <template>
   <div class="TopBarContainer">
+    <RouterLink class="searchButton" :to="{ name: 'pokedexSearch' }"
+      >Search</RouterLink
+    >
     <div class="barContainer">
       <div class="topBarBorder"></div>
       <div class="topBar"></div>
@@ -27,7 +30,7 @@
   display: grid;
   grid-template-rows: auto auto auto;
   grid-template-columns: auto;
-  pointer-events: none;
+  /*pointer-events: none;*/
 }
 
 .barContainer {
@@ -162,5 +165,13 @@
 }
 .miniLedThree {
   background: var(--small-diode-green);
+}
+
+.searchButton {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  z-index: 1;
+  justify-self: end;
+  margin: 0.5rem;
 }
 </style>

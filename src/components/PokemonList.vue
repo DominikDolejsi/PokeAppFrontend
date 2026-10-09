@@ -175,7 +175,7 @@ watch(
     background: var(--grey);
   }
 
-  a:focuse {
+  a:focus {
     border: none;
   }
 

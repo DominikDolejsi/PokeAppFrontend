@@ -34,14 +34,22 @@ watch(pokedexEntries, (newPokedexEntries) => {
 </script>
 
 <template>
-  <div v-if="loading">Loading...</div>
-  <PokemonList
-    v-else
-    :selectedEntryIndex="selectedEntryIndex"
-    :pokemon-data="pokemonData"
-    :pokemon-entries="pokedexEntries"
-    page-name="pokedex"
-  />
+  <div class="container">
+    <div v-if="loading">Loading...</div>
+    <PokemonList
+      v-else
+      :selectedEntryIndex="selectedEntryIndex"
+      :pokemon-data="pokemonData"
+      :pokemon-entries="pokedexEntries"
+      page-name="pokedex"
+    />
+  </div>
 </template>
 
-<style lang="css" scoped></style>
+<style lang="css" scoped>
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+</style>
