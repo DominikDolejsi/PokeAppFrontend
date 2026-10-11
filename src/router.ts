@@ -41,10 +41,11 @@ const router = createRouter({
 });
 
 router.afterEach((to, from) => {
-  console.log("to", to);
-  console.log("from", from);
   if (to.name === "pokedexSearch" && from.name === "pokedex") {
     to.meta.transition = "slide-down";
+  }
+  if (to.name === "pokedex" && from.name === "pokedexSearch") {
+    to.meta.transition = "slide-up";
   }
 });
 

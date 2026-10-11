@@ -38,9 +38,9 @@ onMounted(() => {
 .container {
   display: grid;
   gap: 0.5rem;
-  width: 54px;
-  height: 54px;
-  border-radius: 54px;
+  width: 64px;
+  height: 64px;
+  border-radius: 64px;
   justify-content: start;
   align-content: center;
   user-select: none;
@@ -67,7 +67,7 @@ onMounted(() => {
 }
 
 .icon {
-  width: 50px;
+  width: 60px;
   margin: 2px;
 }
 </style>

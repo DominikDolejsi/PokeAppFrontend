@@ -144,7 +144,7 @@
   justify-content: start;
   gap: 0.5rem;
   padding-top: 0.5rem;
-  padding-left: 5rem;
+  padding-left: 6rem;
 }
 
 .miniLed > div {
@@ -173,5 +173,17 @@
   z-index: 1;
   justify-self: end;
   margin: 0.5rem;
+
+  user-select: none;
+  text-decoration: none;
+  color: var(--black);
+  text-align: center;
+
+  background: var(--light-grey);
+  width: 5rem;
+  border: solid black 1px;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: var(--fs-medium);
 }
 </style>

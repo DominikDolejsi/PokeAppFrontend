@@ -148,7 +148,7 @@ watch(
   position: fixed;
   bottom: 1rem;
   background: var(--pokedex-red);
-  width: calc(100% - 2rem);
+  width: calc(100% - 4vw);
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: auto auto auto auto;
@@ -194,7 +194,7 @@ watch(
   display: grid;
   grid-template-columns: 1fr 1.5rem minmax(0, 475px) 1.5rem 1fr;
   grid-template-rows: auto auto auto auto auto auto auto 6rem;
-  margin: 1rem;
+  margin-inline: 2.5vw;
   margin-top: 3.5rem;
 }
 
@@ -246,12 +246,12 @@ watch(
   text-align: end;
   border: none;
   background: none;
+  z-index: 1;
 
   &:focus {
     outline: none;
   }
-
-  &:focus-visible {
+  focus &:focus-visible {
     outline: 2px solid black;
   }
 }
@@ -310,7 +310,7 @@ watch(
   max-width: 475px;
   margin-top: 1.5rem;
   display: grid;
-  padding: 1rem;
   gap: 1rem;
+  justify-self: center;
 }
 </style>
