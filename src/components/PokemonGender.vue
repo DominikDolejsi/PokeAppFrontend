@@ -3,6 +3,7 @@ import { computed, onMounted } from "vue";
 import { Gender } from "../types";
 import { GENDER_TO_STRING } from "../constants";
 import { getGenderIconSrc, preloadGenderIcons } from "../utils";
+import ExpandableIcon from "./ExpandableIcon.vue";
 
 const { gender } = defineProps<{ gender: Gender }>();
 
@@ -20,54 +21,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <div
-    class="container"
-    :style="{ background: `var(--${parsedGender}-opaque)` }"
-  >
-    <img
-      class="icon"
-      :style="{ background: `var(--${parsedGender})` }"
-      :src="getGenderIconSrc(parsedGender, true)"
-      :alt="altGender"
-    />
-  </div>
+  <ExpandableIcon
+    :iconSrc="getGenderIconSrc(parsedGender, true)"
+    :iconAlt="altGender"
+    :iconText="parsedGender"
+    :iconBackgroundColor="`var(--${parsedGender})`"
+    :backgroundColor="`var(--${parsedGender}-tr)`"
+    direction="left"
+  />
 </template>
 
-<style lang="css" scoped>
-.container {
-  display: grid;
-  gap: 0.5rem;
-  width: 64px;
-  height: 64px;
-  border-radius: 64px;
-  justify-content: start;
-  align-content: center;
-  user-select: none;
-  /*animation-name: expand;*/
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-}
-
-@keyframes expand {
-  0% {
-    width: 54px;
-    border-radius: 54px;
-  }
-
-  50% {
-    width: 154px;
-    border-radius: 54px;
-  }
-
-  100% {
-    width: 54px;
-    border-radius: 54px;
-  }
-}
-
-.icon {
-  width: 60px;
-  margin: 2px;
-  border-radius: 54px;
-}
-</style>
+<style lang="css" scoped></style>

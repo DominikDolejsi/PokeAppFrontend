@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useRoute, useRouter } from "vue-router";
 import { PokemonDB } from "../api/apiTypes";
 import { getArtworkSrc } from "../utils";
 import PokemonThumbnail from "./PokemonThumbnail.vue";
@@ -10,7 +11,15 @@ const { pokemonData, pokemonEntries, pageName } = defineProps<{
   pageName: string;
 }>();
 
+const router = useRouter();
+
 const testEntries = computed<PokemonDB[]>(() => {
+  // I cant hold all of them
+  // Maybe render specific amount first that safe to show
+  // than based on scrollbar smoothly push new
+  // pokemon into array see how it renders ???
+  // I think I will need to research iage optimization never the less
+
   return pokemonEntries.slice(0, -1);
 });
 </script>
@@ -18,11 +27,7 @@ const testEntries = computed<PokemonDB[]>(() => {
 <template>
   <div class="searchContainer">
     <div class="searchBar">
-      <RouterLink
-        class="backButton"
-        :to="{ name: pageName, params: { index: 1 } }"
-        >Back</RouterLink
-      >
+      <Button class="backButton" @click="router.go(-1)">Back</Button>
       <input class="searchInput" />
     </div>
 
@@ -32,6 +37,7 @@ const testEntries = computed<PokemonDB[]>(() => {
           :pageName="pageName"
           :index="pokemon.index"
           :src="getArtworkSrc(pokemon.artwork)"
+          :generation="pokemon.generation"
         />
       </div>
     </div>
@@ -39,12 +45,10 @@ const testEntries = computed<PokemonDB[]>(() => {
 </template>
 
 <style lang="css" scoped>
-.searchContainer {
-}
-
 .searchBar {
   position: sticky;
   top: 0;
+  z-index: 2;
   display: grid;
   grid-template-rows: auto;
   gap: 1rem;

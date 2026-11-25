@@ -8,7 +8,7 @@ import {
   getSortedFormNames,
   getArtworkSrc,
 } from "../utils";
-import { ARTWORK_URL, TYPE_ICON_STYLE } from "../constants";
+import { TYPE_ICON_STYLE } from "../constants";
 import TopBar from "./TopBar.vue";
 import PokemonType from "./PokemonType.vue";
 import PokemonGeneration from "./PokemonGeneration.vue";
@@ -229,7 +229,6 @@ watch(
 
 .category {
   font-size: var(--fs-medium);
-  font-style: italic;
   margin-top: -0.5rem;
 }
 

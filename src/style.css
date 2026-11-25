@@ -171,18 +171,30 @@ h6 {
   --gen-9: rgba(232 204 89 / 100%);
   --gen-10: rgba(157 193 183 / 100%);
 
+  /*Generation colors transparent*/
+  --gen-1-tr: rgba(172 211 108 / 60%);
+  --gen-2-tr: rgba(220 214 119 / 60%);
+  --gen-3-tr: rgba(156 215 200 / 60%);
+  --gen-4-tr: rgba(183 163 195 / 60%);
+  --gen-5-tr: rgba(159 202 223 / 60%);
+  --gen-6-tr: rgba(221 96 140 / 60%);
+  --gen-7-tr: rgba(232 148 131 / 60%);
+  --gen-8-tr: rgba(201 125 192 / 60%);
+  --gen-9-tr: rgba(232 204 89 / 60%);
+  --gen-10-tr: rgba(157 193 183 / 60%);
+
   /*Gender color*/
   --unknown: rgba(183 246 132 / 100%);
   --male: rgba(0 113 189 / 100%);
   --female: rgba(237 30 121 / 100%);
   --gendered: linear-gradient(to left, var(--male), var(--female));
-  --unknown-opaque: rgba(183 246 132 / 60%);
-  --male-opaque: rgba(0 113 189 / 60%);
-  --female-opaque: rgba(237 30 121 / 60%);
-  --gendered-opaque: linear-gradient(
+  --unknown-tr: rgba(183 246 132 / 60%);
+  --male-tr: rgba(0 113 189 / 60%);
+  --female-tr: rgba(237 30 121 / 60%);
+  --gendered-tr: linear-gradient(
     to left,
-    var(--male-opaque),
-    var(--female-opaque)
+    var(--male-tr),
+    var(--female-tr)
   );
 
   /*Font sizes*/

@@ -1,13 +1,20 @@
 <script setup lang="ts">
-const { src, pageName, index } = defineProps<{
+const { src, pageName, index, generation } = defineProps<{
   src: string;
   pageName: string;
   index: number;
+  generation: number;
 }>();
 </script>
 
 <template>
   <div class="container">
+    <div
+      class="background"
+      :style="{
+        background: `linear-gradient(white, var(--gen-${generation}-tr))`,
+      }"
+    ></div>
     <RouterLink
       class="imageLink"
       :to="{ name: pageName, params: { index: index } }"
@@ -20,8 +27,17 @@ const { src, pageName, index } = defineProps<{
 <style lang="css" scoped>
 .container {
   display: grid;
-  max-width: 64px;
-  border: 2px solid black;
-  border-radius: 0.5rem;
+  width: 64px;
+}
+
+.imageLink {
+  z-index: 1;
+}
+
+.background {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  filter: blur(6px);
 }
 </style>
